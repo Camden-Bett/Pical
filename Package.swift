@@ -1,5 +1,6 @@
 // swift-tools-version: 6.0
 import PackageDescription
+import AppleProductTypes
 
 let package = Package(
     name: "Pical",
@@ -8,9 +9,20 @@ let package = Package(
         .macOS(.v14)
     ],
     products: [
-        .executable(
-            name: "PicalApp",
-            targets: ["PicalApp"]
+        .iOSApplication(
+            name: "Pical",
+            targets: ["PicalApp"],
+            bundleIdentifier: "com.magpiesoft.pical",
+            teamIdentifier: "YOUR_TEAM_IDENTIFIER",
+            displayVersion: "0.1.0",
+            bundleVersion: "1",
+            appIcon: .none,
+            accentColor: .none,
+            supportedDeviceFamilies: [.phone],
+            supportedInterfaceOrientations: [
+                .portrait,
+                .portraitUpsideDown(.when(deviceFamilies: [.phone]))
+            ]
         )
     ],
     targets: [
